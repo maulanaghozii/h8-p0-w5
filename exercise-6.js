@@ -1,17 +1,27 @@
 function meleeRangedGrouping (str) {
     //your code here
-    let strArray = []
-    if(typeof str === 'string'){
-       strArray = str.split(',')
-    } else{
-        if(strArray[0].indexOf('Ranged') !== -1){
-            
-        } else if(strArray[0].indexOf('Melee') !== -1){
-            
-        }
-
+    let result=[];
+    if(str.length===0){
+      return result
     }
-    return result
+
+    let string = str.split(",");
+    
+    let ranged=[];
+    let melee=[];
+    
+    for(let i = 0;i<string.length;i++){
+        let arrayName=string[i].split("-");
+        
+        if(arrayName[1]==="Ranged"){
+            ranged.push(arrayName[0]);
+        }else {
+            melee.push(arrayName[0]);
+        }
+    }
+    result.push(ranged);
+    result.push(melee)
+    return result;
   }
   
   // TEST CASE
